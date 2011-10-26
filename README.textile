@@ -1,0 +1,30 @@
+h1. Iterate
+
+This plugin for ExpressionEngine 2 iterates through pipe-delimited strings, passed in as parameters.
+
+h3. Requirements
+
+* "ExpressionEngine 2":http://expressionengine.com/index.php?affiliate=brandonkelly
+
+h3. Installation
+
+* Upload the iterate folder to system/expressionengine/third_party/
+
+h3. Usage
+
+Use Numstyle in your templates like so:
+
+bc. {exp:iterate breakfast="Coffee|Mimosa|Eggs Benedict"}
+    <li>{breakfast}</li>
+{/exp:iterate}
+
+h4. Parameters
+
+* @offset="2"@
+* @limit="5"@
+
+h4. Tags
+
+* @{count}@
+* @{total_results}@
+* @{switch="X|Y|Z"}@
