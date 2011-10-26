@@ -12,7 +12,7 @@ h3. Installation
 
 h3. Usage
 
-Use Numstyle in your templates like so:
+Use Iterate in your templates like so:
 
 bc. {exp:iterate breakfast="Coffee|Mimosa|Eggs Benedict"}
     <li>{breakfast}</li>
