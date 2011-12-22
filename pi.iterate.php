@@ -41,7 +41,7 @@ class Iterate {
 
 		if (($delimiter = $EE->TMPL->fetch_param('delimiter')) !== FALSE)
 		{
-			unset($delimeter);
+			unset($EE->TMPL->tagparams['delimter']));
 		}
 		else
 		{
