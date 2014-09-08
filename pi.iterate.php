@@ -9,9 +9,10 @@ $plugin_info = array(
 	'pi_description' => 'Iterates through one or more pipe-delimited strings, passed in as parameters',
 
 	'pi_usage'       => '{exp:iterate breakfast="Coffee|Mimosa|Eggs Benedict"}' . NL
-	                  . '    <li>{breakfast}</li>' . NL
+	                  . '    <li>{breakfast}</li>' . NL
 	                  . '{/exp:iterate}' . NL . NL
 	                  . 'Parameters:' . NL . NL
+	                  . '- delimiter="|"' . NL
 	                  . '- offset="2"' . NL
 	                  . '- limit="5"' . NL . NL
 	                  . 'Tags:' . NL . NL
@@ -38,6 +39,15 @@ class Iterate {
 	{
 		$EE =& get_instance();
 
+		if (($delimiter = $EE->TMPL->fetch_param('delimiter')) !== FALSE)
+		{
+			unset($EE->TMPL->tagparams['delimter']);
+		}
+		else
+		{
+			$delimiter = '|';
+		}
+	
 		if (($offset = $EE->TMPL->fetch_param('offset')) !== FALSE)
 		{
 			unset($EE->TMPL->tagparams['offset']);
@@ -47,12 +57,12 @@ class Iterate {
 		{
 			unset($EE->TMPL->tagparams['limit']);
 		}
-
+		
 		if ($EE->TMPL->tagparams)
 		{
 			foreach ($EE->TMPL->tagparams as $key => $val)
 			{
-				$arrays[$key] = array_filter(explode('|', $val));
+				$arrays[$key] = array_filter(explode($delimiter, $val));
 				$length = count($arrays[$key]);
 
 				if (! isset($longest) || $length > $longest)
